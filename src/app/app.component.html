@@ -27,13 +27,15 @@
       </a>
 
       <a mat-list-item
-        routerLink="login">
+        routerLink="login"
+        *ngIf="auth.isLoggedOut$ | async">
         <mat-icon>account_circle</mat-icon>
         <span>Login</span>
       </a>
 
       <a mat-list-item
-        (click)="logout()">
+        (click)="logout()"
+        *ngIf="auth.isLoggedIn$ | async">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
@@ -57,6 +59,8 @@
 
 
   </mat-toolbar>
+
+  <messages></messages>
 
   <loading></loading>
 
